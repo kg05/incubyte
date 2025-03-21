@@ -1,7 +1,7 @@
-//added minimal code to pass the first test case.
 function add(numStr) {
   if (numStr == "") return 0;
-  return parseInt(numStr);
+  const numbers = numStr.split(",").map(Number);
+  return numbers.reduce((sum, num) => sum + num, 0);
 }
 
 module.exports = add;
