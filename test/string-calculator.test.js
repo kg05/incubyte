@@ -49,3 +49,7 @@ test("should support different length of delimiters like ***", () => {
 test("should support different length of delimiters like ;;;", () => {
   expect(add("//[;;;]\n1;;;2;;;3")).toBe(6);
 });
+
+test("should support multiple delimiters like *,%", () => {
+  expect(add("//[*][%]\n1*2%3")).toBe(6);
+});
