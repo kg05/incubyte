@@ -7,11 +7,15 @@ function add(numStr) {
     delimiter = splitedStr[0].substring(2);
     numStr = splitedStr[1];
   }
-  const numbers = numStr.split(delimiter).map(Number);
+
+  let numbers = numStr.split(delimiter).map(Number);
   let negNumbers = numbers.filter((number) => number < 0);
   if (negNumbers.length > 0) {
     throw new Error(`negative numbers not allowed ${negNumbers.join(",")}`);
   }
+
+  numbers = numbers.filter((number) => number <= 1000);
+
   return numbers.reduce((sum, num) => sum + num, 0);
 }
 
