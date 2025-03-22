@@ -4,15 +4,23 @@ function add(numStr) {
 
   if (numStr.substring(0, 2) === "//") {
     const splitedStr = numStr.split("\n");
-    //more than 1 char in delimiter
+    //This is my comment :: more than one char or multiple delimiters
     if (splitedStr[0][2] == "[") {
-      delimiter = splitedStr[0].substring(3).slice(0, -1);
+      const allDelimiters = splitedStr[0]
+        .substring(2)
+        .split(/[\[\]]/)
+        .filter(Boolean);
+      //This is my comment :: handle regex specific characters like (*, +)
+      delimiter = new RegExp(
+        allDelimiters
+          .map((d) => d.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"))
+          .join("|")
+      );
     } else {
       delimiter = splitedStr[0].substring(2);
     }
     numStr = splitedStr[1];
   }
-
   let numbers = numStr.split(delimiter).map(Number);
   let negNumbers = numbers.filter((number) => number < 0);
   if (negNumbers.length > 0) {
