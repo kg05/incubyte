@@ -4,7 +4,12 @@ function add(numStr) {
 
   if (numStr.substring(0, 2) === "//") {
     const splitedStr = numStr.split("\n");
-    delimiter = splitedStr[0].substring(2);
+    //more than 1 char in delimiter
+    if (splitedStr[0][2] == "[") {
+      delimiter = splitedStr[0].substring(3).slice(0, -1);
+    } else {
+      delimiter = splitedStr[0].substring(2);
+    }
     numStr = splitedStr[1];
   }
 
