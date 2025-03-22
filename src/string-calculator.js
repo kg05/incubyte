@@ -8,9 +8,9 @@ function add(numStr) {
     numStr = splitedStr[1];
   }
   const numbers = numStr.split(delimiter).map(Number);
-  let number = numbers.find((number) => number < 0);
-  if (number) {
-    throw new Error(`negative numbers not allowed ${number}`);
+  let negNumbers = numbers.filter((number) => number < 0);
+  if (negNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed ${negNumbers.join(",")}`);
   }
   return numbers.reduce((sum, num) => sum + num, 0);
 }

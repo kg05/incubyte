@@ -33,7 +33,7 @@ test("should throw an error for negative number", () => {
 });
 
 test("should throw an error for multiple negative numbers", () => {
-  expect(() => add("1\n3,-4,2,-5-6")).toThrow(
+  expect(() => add("1\n3,-4,2,-5,-6")).toThrow(
     "negative numbers not allowed -4,-5,-6"
   );
 });
