@@ -27,3 +27,7 @@ test("should support different delimiters like ;", () => {
 test("should support different delimiters like *", () => {
   expect(add("//*\n1*2")).toBe(3);
 });
+
+test("should throw an error for negative number", () => {
+  expect(() => add("1\n3,-4")).toThrow("negative numbers not allowed -4");
+});
