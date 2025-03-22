@@ -31,3 +31,9 @@ test("should support different delimiters like *", () => {
 test("should throw an error for negative number", () => {
   expect(() => add("1\n3,-4")).toThrow("negative numbers not allowed -4");
 });
+
+test("should throw an error for multiple negative numbers", () => {
+  expect(() => add("1\n3,-4,2,-5-6")).toThrow(
+    "negative numbers not allowed -4,-5,-6"
+  );
+});
